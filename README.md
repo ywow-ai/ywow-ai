@@ -43,6 +43,3 @@ I'm always eager to learn new things and explore innovative technologies. Let's 
 <a href="https://fb.com/https://www.facebook.com/muhammad.alamulyaqin.75" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/facebook.svg" alt="https://www.facebook.com/muhammad.alamulyaqin.75" height="30" width="40" /></a>
 <a href="https://instagram.com/ywow.ai" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="ywow.ai" height="30" width="40" /></a>
 </p>
-
-
-![Deskripsi Gambar](images/2021041311181578636.png)
