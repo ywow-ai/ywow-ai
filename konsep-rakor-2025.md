@@ -1,84 +1,94 @@
-# AI-Driven Decision Making
+# **🚀 Frontend Dulu, Backend Menyusul: Langkah Awal Microservices**
 
-## Latar Belakang
+## **1. Latar Belakang: Kenapa Perlu Berubah?**
 
-Aku sedang bercerita, kawan...
+💡 **Masalah yang Kita Hadapi Saat Ini:**
 
-## Masalah
+### **🖥️ Tampilan**
 
-AI hanya tahu data apa yang kita berikan kepadanya.
+Bapak Direktur sering mengeluhkan UI aplikasi, terutama di **mobile**. Banyak **ruang kosong tidak terpakai**, sementara tabel data justru terlalu kecil. Hasilnya? **Pengalaman pengguna buruk** dan informasi sulit dibaca.
 
-### Efeknya
+### **🛣️ Arsitektur Monolith**
 
-Hal ini bisa membatasi akurasi dan kualitas keputusan yang dapat dibuat jika data yang diberikan tidak lengkap, terstruktur dengan baik, atau tidak mencakup semua aspek yang relevan.
+Bayangkan **jalan raya besar** yang dilewati oleh semua kendaraan—mulai dari mobil kecil hingga truk besar. Seharusnya **pengguna sepeda** bisa melaju bebas, tapi mereka tetap harus menunggu kendaraan besar lewat.
 
-## Solusi
+Nah, sistem kita **masih menggunakan PHP monolith**, yang **bersifat blocking**. Itu artinya:
 
-Untuk mengatasi masalah ini, ada beberapa langkah yang perlu dilakukan:
+- ✅ **Permintaan kecil tetap harus menunggu permintaan besar selesai**.
+- ✅ **Proses satu per satu, tidak bisa berjalan paralel**.
 
-- **Mengumpulkan data yang relevan**: Menyediakan data yang mencakup berbagai aspek yang berhubungan dengan keputusan yang akan diambil.
-- **Membersihkan dan menata data**: Menghapus data yang tidak relevan dan memperbaiki kesalahan data untuk meningkatkan kualitas analisis.
-- **Memperbarui data secara berkala**: Agar tetap relevan, data harus diperbaharui secara berkala dengan informasi terbaru.
-- **Mengintegrasikan sumber data yang beragam**: Menggabungkan data dari berbagai sumber untuk mendapatkan gambaran yang lebih komprehensif.
+### **⚡ Performa**
 
-## Apa yang Dibutuhkan?
+Saat ini, server kita **masih baik-baik saja**, tapi kita **bisa lebih memaksimalkan resource**. VPS **bukan sekadar hosting**, itu adalah **komputer aktif** yang bisa menjalankan **banyak layanan secara bersamaan**.
 
-- **Wawancara dengan Pihak Terkait**:  
-   Untuk memahami proses pengambilan keputusan yang lebih dalam, penting untuk melakukan wawancara dengan pihak-pihak yang terlibat langsung dalam analisis data dan pengambilan keputusan. Beberapa hal yang perlu dicari tahu adalah:
+### **🛠️ Struktur Data**
 
-  - Apa yang biasa mereka lakukan saat melihat data?
-  - Apa faktor-faktor yang mereka pertimbangkan dalam membuat keputusan?
-  - Apa alasan yang mendasari pengambilan keputusan tersebut?
-  - Bagaimana mereka menilai keakuratan atau relevansi data yang diberikan?
+Setiap kali ada perubahan data, **sering muncul informasi yang salah** di aplikasi.  
+**Kenapa?**
 
-  Dengan memahami hal-hal ini, aku bisa memprogram AI untuk mereplikasi proses berpikir tersebut, sehingga AI dapat memberikan keputusan yang lebih mendekati keputusan manusia yang terinformasi.
+- **Data sulit dikelola** dalam struktur yang sekarang.
+- **Solusi:** Kita butuh **struktur yang lebih modular** supaya lebih mudah diperbarui tanpa mengacaukan sistem lain.
+- Hal ini akan lebih memudahkan dalam pengecekan ketika ketika ada ketidakcocokan informasi.
 
-- **Model AI yang besar**: Dengan kemampuan untuk menyimpan riwayat obrolan yang besar dan menerima permintaan dalam jumlah besar.  
-   _(Ini masih tahap awal, yang penting adalah implementasi pertama bisa berjalan lancar.)_
+---
 
-- **Membuat ulang struktur data perusahaan**: Agar lebih memudahkan integrasi dan implementasi AI ke dalam sistem.  
-   _(Hal ini juga akan membantu memenuhi permintaan terkait performa aplikasi, keamanan, dan kenyamanan.)_
+## **2. Microservices**
 
-- **Tambahan karyawan**: Untuk menangani pekerjaan yang tersisa, karena aku akan fokus pada implementasi AI.
+🔄 **Monolith vs Microservices**
 
-## Pembagian Layanan Aplikasi
+- **🟡 Monolith = Sentralisasi.** Semua data dan layanan terpusat di satu tempat.
+- **🟢 Microservices = Desentralisasi.** Setiap layanan berdiri sendiri dan hanya saling terhubung melalui **API**.
 
-Ke depannya, aplikasi akan dibagi menjadi beberapa layanan terpisah untuk meningkatkan performa dan skalabilitas:
+Dengan **microservices**:
 
-- **Auth**: Menangani otentikasi dan keamanan.
-- **AI**: Pengolahan dan analisis data menggunakan AI.
-- **Backend**: Pengelolaan logika bisnis dan interaksi dengan database.
-- **Frontend**: User interface yang menghubungkan pengguna dengan aplikasi.
-- **Notifikasi**: Pengelolaan notifikasi sesuai kebutuhan.
-- **File**: Pengelolaan file dan media.
+- ✅ **Frontend bisa lebih fleksibel** dalam mengambil data.
+- ✅ **Backend bisa lebih scalable**, setiap layanan bisa dikembangkan secara independen.
+- ✅ **Performa lebih optimal**, karena proses bisa berjalan **paralel, tidak perlu menunggu antrian panjang**.
+- ✅ **Dan yang lebih penting...**, Kedepannya, kita juga akan memberikan API kita ke pihak ketiga. Karena aplikasi sudah berbasis API, kita tidak perlu membuat API baru saat pihak ketiga meminta data.
 
-### Keuntungan Pembagian Layanan
+---
 
-Karena aplikasi dibagi menjadi beberapa layanan terpisah, dibutuhkan server yang lebih besar. Namun, ini menjadi keuntungan karena server yang ada saat ini sudah cukup besar untuk menangani aplikasi monolith dan akan lebih optimal saat digunakan untuk layanan-layanan terpisah.
+## **3. Layanan yang Akan Dipisah & Teknologi yang Digunakan**
 
-## Analisis Risiko
+🎯 **Kita tidak langsung memisah semuanya!** Kita mulai dari yang paling berdampak: **Frontend dengan React.**  
+💡 **Berikut layanan lain yang akan menyusul:**
 
-Beberapa potensi risiko dalam implementasi AI:
+### **🔐 Auth (Elysia) → Otentikasi & Keamanan**
 
-- **Keterbatasan Data**: Walaupun kita berusaha mengumpulkan data yang relevan, ada kemungkinan data yang kita butuhkan tidak tersedia atau sulit didapatkan.
-- **Kesalahan dalam Analisis**: AI bisa membuat kesalahan dalam menganalisis data jika data yang diberikan tidak cukup atau tidak terstruktur dengan baik.
-- **Keamanan Data**: Perlu dipastikan bahwa data yang digunakan dan disimpan tetap aman dan tidak terpapar risiko kebocoran.
+- Di masa depan, kita ingin punya **SSO (Single Sign-On)** seperti login Shopee yang bisa pakai **Google atau Facebook**.
+- **Kenapa Elysia?**
+  - ✅ Menggunakan **TypeScript**, performa tinggi.
+  - ✅ **Asynchronous** → Tidak perlu menunggu proses sebelumnya selesai.
+  - ✅ **Keamanan lebih baik** → **NIK & password hanya disimpan di Auth Service**.
 
-## Penekanan pada Keterlibatan Tim dalam Pengembangan AI
+---
 
-Agar data dapat diimplementasikan dengan efektif, kita perlu **konsep yang benar-benar matang**. Tanpa konsep yang jelas dan terstruktur, hasil implementasi AI bisa melenceng dari tujuan awal, yang akan sangat merugikan. Aku bisa membantu dalam membuat konsep ini, sehingga kita dapat memastikan bahwa implementasi AI tidak berbelok dari tujuan yang sudah disepakati.
+### **🛠️ Backend (Laravel) → Logika Bisnis & Database**
 
-## Pembagian Layanan Aplikasi: Spesifikasikan Integrasi Antar Layanan
+- **Kenapa Laravel?**
+  - ✅ Banyak developer kita sudah familiar.
+  - ✅ Aplikasi sekarang masih Laravel 8, kita bisa migrasi ke Laravel 11.
+  - ✅ **Database lebih terstruktur** tanpa mencampur login & otentikasi.
 
-Pengintegrasian antar layanan akan dilakukan dengan menggunakan metode seperti:
+📌 **Penting!** Data pengguna **ada di backend**, tapi **password tetap di Auth Service**.
 
-- **API Gateway**: Menggunakan API Gateway untuk mengelola komunikasi antar layanan.
-- **Message Queues (RabbitMQ, Kafka)**: Untuk menangani komunikasi antar layanan yang lebih terdesentralisasi dan memastikan skalabilitas.
+---
 
-## Pengukuran Keberhasilan
+### **🎨 Frontend (React) → User Interface**
 
-Untuk memastikan implementasi AI berjalan dengan sukses, kita perlu mengukur beberapa indikator keberhasilan, seperti:
+- **Kenapa React?**
+  - ✅ **Komponen reusable** → Lebih cepat dikembangkan.
+  - ✅ **State Management lebih efisien**.
+  - ✅ **Lebih fleksibel** dalam mengambil data dari berbagai microservices.
 
-- **Akurasi Keputusan AI**: Mengukur seberapa baik keputusan yang dibuat AI sebanding dengan keputusan manusia atau keputusan yang diinginkan.
-- **Waktu Pengambilan Keputusan**: Mengukur seberapa cepat AI dapat menganalisis data dan memberikan keputusan.
-- **Tingkat Kepuasan Pengguna**: Mengumpulkan feedback dari pengguna tentang kualitas keputusan yang dihasilkan AI.
+Dengan React, **UI jadi lebih dinamis & responsif**, sesuai dengan feedback dari pengguna!
+
+---
+
+### **📂 File (Apache) → Pengelolaan File & Media**
+
+- **Kenapa Apache?**
+  - ✅ Lebih **efisien untuk file storage** dibanding menyimpannya langsung di backend.
+  - ✅ **Tidak membebani Laravel**, sehingga backend tetap fokus pada logika bisnis.
+
+---
